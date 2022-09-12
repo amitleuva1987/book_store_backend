@@ -1,3 +1,11 @@
+## How to install
+
+- Clone the project using `git clone https://github.com/amitleuva1987/book_store_backend.git`
+- Copy `.env.example` file to `.env` and edit database credentials there
+- Run `composer install`
+- Run `sail artisan key:generate`
+- Run `sail artisan migrate` && `sail artisan db:seed`
+
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
 <p align="center">
