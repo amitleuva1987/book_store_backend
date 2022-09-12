@@ -6,17 +6,18 @@
 - Run `docker run --rm \ -u "$(id -u):$(id -g)" \ -v $(pwd):/var/www/html \ -w /var/www/html \ laravelsail/php81-composer:latest \ composer install --ignore-platform-reqs`
 - Run `sail artisan key:generate`
 - place below variables in .env file
-  `SCOUT_DRIVER=elasticsearch`
-  `ELASTICSEARCH_INDEX=scout`
-  `ELASTICSEARCH_HOST=elasticsearch:9200`
-- Run `sail artisan migrate` && `sail artisan db:seed`
+- `SCOUT_DRIVER=elasticsearch`
+- `ELASTICSEARCH_INDEX=scout`
+- `ELASTICSEARCH_HOST=elasticsearch:9200`
+- Run `sail artisan migrate` && `sail artisan db:seed` (data will get imported from https://fakerapi.it/api/v1/books?_quantity=100)
 - Run `sail artisan scout:import 'App\Models\Product'` to make the search index
 
 ## API Implementation
 
-- below is the api list of the book store backend
-  1 . GET (request type) -> 'api/products' (route name) -> ProductController@index (controller and method)
-  this route return all the product (books) paginated data.
+below is the api list of the book store backend
+
+1 . GET (request type) -> 'api/products' (route name) -> ProductController@index (controller and method)
+this route return all the product (books) paginated data.
 
 2 . GET (request type) -> api/products/{product} (route name) -> ProductController@show (controller and method)
 this route returns a single product (book).
