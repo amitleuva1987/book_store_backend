@@ -23,8 +23,8 @@ class ProductController extends Controller
     public function index()
     {
         try{
-           return new ProductResource(Product::paginate(10,['id','title','image','author','genre','publisher']));
-        } catch (\Exception $e){
+           return new ProductResource(Product::paginate(10,['id','title','image','author','genre','publisher','published']));
+        } catch (\Exception $e) {
             return response()->json(
                 ['message' => $e->getMessage()
             ],Response::HTTP_INTERNAL_SERVER_ERROR);
@@ -50,7 +50,9 @@ class ProductController extends Controller
     public function store(ProductRequest $request)
     {
         try{
-        $path = $request->file('image')->store('public/books');
+        if($request->hasFile('image')){    
+            $path = $request->file('image')->store('public/books');
+        }
         
         $product = Product::create([
             'title' => $request->title,
