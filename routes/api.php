@@ -28,10 +28,15 @@ Route::get('get_image/{id}', function ($id) {
     return response()->download(storage_path('app/'.$product->image), null, [], null);
 });
 
-Route::post('search',[ProductSearchController::class,'search']);
+
 Route::get('get_all_books',[ProductSearchController::class,'allBooks']);
 Route::post('update_product/{id}',[ProductController::class,'productUpdate'])->middleware('auth:sanctum');
 Route::apiresource('products', ProductController::class);
 
 Route::post('login', LoginController::class);    
 Route::post('logout', LogoutController::class)->middleware('auth:sanctum');
+
+Route::post('search',[ProductSearchController::class,'search']);
+Route::post('elasticsearch',[ProductSearchController::class,'elasticsearch']);
+Route::get('get_genre',[ProductSearchController::class,'genreFilter']);
+Route::post('get_genre_filtered_data',[ProductSearchController::class,'genreFilterData']);
