@@ -10,7 +10,7 @@ class Product extends Model
 {
     use HasFactory, Searchable; 
 
-    protected $fillable = ['title','author','genre','description','isbn','published','publisher'];
+    protected $fillable = ['title','author','genre','description','image','isbn','published','publisher'];
 
     protected $casts = [
 //        'published' => 'date:j F Y',
